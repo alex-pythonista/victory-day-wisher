@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Day!!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+    <div class="flex gap-4">
+        <div class="w-1/2">
+            <h1 class="text-2xl font-bold pb-2">今日はバングラデシュの第54回勝利記念日です！</h1>
+            <h3 class="text-xl pb-3">バングラデシュに関するいくつかの面白い事実をご紹介します：</h3>
+            <ul class="list-decimal list-inside space-y-2 pb-4">
+                <li>バングラデシュは1971年にパキスタンから独立を果たしました。その際、インドはバングラデシュの勝利において重要な役割を果たしました。</li>
+                <li>「most sweetest lamnguage in the world」と検索すると、ベンガル語が出てきます。これはバングラデシュの人々が話す言語です。ただし、これは個人の好みによる主観的なものです。</li>
+                <li>1972年2月10日、日本はバングラデシュを独立国家として正式に承認した最初の国の一つとなりました。それ以来、日本とバングラデシュの友情は、相互の尊敬、文化交流、そして重要な経済・開発協力によってさらに強固なものとなり、共通の価値観と信頼に基づく二国間関係の模範となっています。</li>
+            </ul>
+
+            <span class="font-bold">こちらがバングラデシュの国歌です。</span><br>
+            <span class="text-sm">Credit: <a target="_blank" href="https://www.youtube.com/watch?v=O0UFup1VmgU" class="text-blue-500 underline">National Anthems Channel [YouTube]</a></span>
+            <video 
+                src="<%= asset_path('national_anthem.mp4') %>" 
+                controls 
+                autoplay 
+                playsinline 
+                class="w-[300px] h-[200px]">
+            </video>
+        </div>
+        <div class="w-1/2">
+            <h1 class="text-2xl font-bold pb-4">「勝利記念日おめでとうございます」とお祝いしましょう。</h1>
+            <form action="/wish" method="post" class="flex gap-2">
+                <input type="text" id="name" name="name" placeholder="お名前を入力してください。。。" class="flex-grow p-2 border border-gray-300 rounded">
+                <button type="submit" class="p-2 bg-blue-500 text-white rounded">お祝いしましょう。</button>
+            </form>
+            <hr class="mt-4 border-t-2 border-gray-300">
+
+            <!--chat -->
+            <div class="mt-4">
+                <h2 class="text-xl font-bold pb-2">お祝いメッセージ</h2>
+                <ul class="space-y-2">
+                    <% @wishers.each do |wisher| %>
+                        <li class="border border-gray-300 p-2 rounded flex items-center gap-2">
+                            <img src="<%= asset_path("avatar_#{wisher.avatar}.png") %>" alt="Profile Image" class="w-8 h-8 rounded-full">
+                            <span class="font-bold">
+                             <%= wisher.name %>さん
+                            </span> Happy Victory Day! 🎉🎉🎉
+                        </li>
+                    <% end %>
+                </ul>
+        </div>
+    </div>
+</body>
+</html>
